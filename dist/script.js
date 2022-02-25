@@ -17948,8 +17948,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var forms = function forms(state) {
-  var form = document.querySelectorAll('form');
-  var inputs = document.querySelectorAll('input');
+  var form = document.querySelectorAll('form'),
+      inputs = document.querySelectorAll('input'),
+      modal = document.querySelectorAll('[data-modal]');
   var message = {
     loading: 'Загрузка...',
     success: 'Спасибо за заявку! Скоро мы с вами свяжемся',
@@ -18016,6 +18017,12 @@ var forms = function forms(state) {
         setTimeout(function () {
           statusMessage.remove();
         }, 3000);
+        setTimeout(function () {
+          modal.forEach(function (item) {
+            item.style.display = 'none';
+            document.body.style.overflow = '';
+          });
+        }, 1500);
       });
     });
   });
@@ -18090,7 +18097,7 @@ var modals = function modals() {
   bindModal('.popup_calc_btn', '.popup_calc ', '.popup_calc_close');
   bindModal('.popup_calc_button', '.popup_calc_profile', '.popup_calc_profile_close', false);
   bindModal('.popup_calc_profile_button', '.popup_calc_end', '.popup_calc_end_close', false);
-  showModalByTime('.popup', 60000);
+  showModalByTime('.popup', 60000000);
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (modals);

@@ -1,8 +1,9 @@
 import checkNumbersInptut from "./checkNumberInput";
 
 const forms = (state) => {
-    const form = document.querySelectorAll('form');
-    const inputs = document.querySelectorAll('input');
+    const form = document.querySelectorAll('form'),
+          inputs = document.querySelectorAll('input'),
+          modal = document.querySelectorAll('[data-modal]');
 
     const message = {
         loading: 'Загрузка...',
@@ -54,6 +55,13 @@ const forms = (state) => {
                     setTimeout(() =>{
                         statusMessage.remove();
                     },3000);
+                    setTimeout(() => {
+                        modal.forEach(item => {
+                            item.style.display = 'none';
+                            document.body.style.overflow = '';
+                        
+                        });
+                    }, 1500);
                 });
         });
     });
